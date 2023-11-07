@@ -1,6 +1,6 @@
-class Menu extends Phaser.Scene{
+class Death extends Phaser.Scene{
     constructor(){
-        super("menuScene");
+        super("deathScene");
     }
 
     preload(){
@@ -28,8 +28,8 @@ class Menu extends Phaser.Scene{
     }
 
     //show menu text
-    this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'Doomsday Runner', menuConfig).setOrigin(0.5);
-    this.add.text(game.config.width / 2, game.config.height / 2, 'Use Space Bar to Jump over Obstacles', menuConfig).setOrigin(0.5);
+    this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'You Died', menuConfig).setOrigin(0.5);
+    this.add.text(game.config.width / 2, game.config.height / 2, 'Press R to Restart', menuConfig).setOrigin(0.5);
     menuConfig.backgroundColor = '#000';
     menuConfig.color = '#054784';
     this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'Space Bar to Start', menuConfig).setOrigin(0.5);
@@ -40,13 +40,13 @@ class Menu extends Phaser.Scene{
 }
 
     update(){
-        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+        if(Phaser.Input.Keyboard.JustDown(keyR)){
             //start game
             game.settings = {
-                obstaclespeed: 3,
+                spaceshipSpeed: 3,
                 gameTimer: 60000
             }
-            this.sound.play('backgroundmusic');
+            this.sound.play('menumusic');
             this.scene.start('playScene');
         }
 }
